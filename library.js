@@ -1,7 +1,7 @@
 // ===========================
 // ClipCentral
 // library.js
-// Optimized Video Preview Version
+// Optimized Video Loading Version
 // ===========================
 
 
@@ -23,10 +23,10 @@ let playerClips = [];
 
 
 
+// ===========================
+// Search Box
+// ===========================
 
-
-
-// Search box
 
 const searchBox = document.createElement("input");
 
@@ -46,12 +46,12 @@ container.parentElement.insertBefore(
 
 
 
+// ===========================
+// Format Name
+// ===========================
 
-
-// Format name
 
 function formatName(name){
-
 
     return name
     .replaceAll("-", " ")
@@ -59,9 +59,7 @@ function formatName(name){
         letter.toUpperCase()
     );
 
-
 }
-
 
 
 
@@ -70,12 +68,10 @@ function formatName(name){
 
 if(player && title){
 
-
     title.innerHTML =
     formatName(player)
     +
     " Clips";
-
 
 }
 
@@ -86,8 +82,10 @@ if(player && title){
 
 
 
+// ===========================
+// Load Clips
+// ===========================
 
-// Load clips
 
 async function loadClips(){
 
@@ -106,13 +104,13 @@ async function loadClips(){
 
 
 
+
         playerClips =
         allClips.filter(clip =>
 
             clip.player === player
 
         );
-
 
 
 
@@ -144,9 +142,10 @@ async function loadClips(){
 
 
 
+// ===========================
+// Search
+// ===========================
 
-
-// Search delay
 
 let searchTimer;
 
@@ -179,18 +178,13 @@ searchBox.addEventListener(
 
 
 
-
-
-
 function searchClips(){
-
 
 
     const text =
     searchBox.value
     .toLowerCase()
     .trim();
-
 
 
 
@@ -205,8 +199,6 @@ function searchClips(){
 
 
     }
-
-
 
 
 
@@ -242,8 +234,6 @@ function searchClips(){
 
 
 
-
-
     displayClips(filtered);
 
 
@@ -258,30 +248,12 @@ function searchClips(){
 
 
 
+// ===========================
+// Display Clips
+// ===========================
 
-
-// Display clips
 
 function displayClips(clips){
-
-
-
-
-
-    container
-    .querySelectorAll("video")
-    .forEach(video=>{
-
-
-        video.pause();
-
-
-        video.removeAttribute("src");
-
-
-    });
-
-
 
 
 
@@ -289,10 +261,8 @@ function displayClips(clips){
 
 
 
-
     const fragment =
     document.createDocumentFragment();
-
 
 
 
@@ -314,9 +284,7 @@ function displayClips(clips){
 
         return;
 
-
     }
-
 
 
 
@@ -340,8 +308,6 @@ function displayClips(clips){
 
 
 
-
-
         card.innerHTML = `
 
 
@@ -357,8 +323,7 @@ function displayClips(clips){
 
             playsinline
 
-            preload="none">
-
+            preload="metadata">
 
 
                 <source
@@ -368,10 +333,7 @@ function displayClips(clips){
                 type="video/mp4">
 
 
-
             </video>
-
-
 
 
 
@@ -390,8 +352,6 @@ function displayClips(clips){
 
 
 
-
-
         <div class="clip-info">
 
 
@@ -404,11 +364,13 @@ function displayClips(clips){
 
 
 
+
             <p>
 
             ${clip.playerName || ""}
 
             </p>
+
 
 
 
@@ -448,13 +410,10 @@ function displayClips(clips){
 
 
 
-
         </div>
 
 
-
         `;
-
 
 
 
@@ -467,10 +426,8 @@ function displayClips(clips){
         card.querySelector("video");
 
 
-
         const videoBox =
         card.querySelector(".video-box");
-
 
 
         const overlay =
@@ -481,57 +438,91 @@ function displayClips(clips){
 
 
 
-
-
-        // Load first frame
-
-        video.addEventListener(
-            "loadedmetadata",
-            ()=>{
-
-
-                video.currentTime = 0.1;
-
-
-            }
-        );
-
-
-
-
-        video.addEventListener(
-            "loadeddata",
-            ()=>{
-
-
-                video.pause();
-
-
-            }
-        );
+        let playing = false;
 
 
 
 
 
 
-
-
-        // Hover ONLY video area
+        // ===========================
+        // Hover Preview
+        // ===========================
 
 
         videoBox.addEventListener(
         "mouseenter",
-        ()=>{
+        async ()=>{
 
 
-            video.play();
+            try{
 
 
-            overlay.style.opacity="0";
+                // stop other videos
+
+                document
+                .querySelectorAll(".library-card video")
+                .forEach(other=>{
+
+
+                    if(other !== video){
+
+
+                        other.pause();
+
+
+                        other.currentTime = 0;
+
+
+
+                        const otherOverlay =
+                        other
+                        .closest(".video-box")
+                        .querySelector(".play-overlay");
+
+
+
+                        if(otherOverlay){
+
+                            otherOverlay.style.opacity="1";
+
+                        }
+
+
+                    }
+
+
+                });
+
+
+
+
+                await video.play();
+
+
+
+                overlay.style.opacity="0";
+
+
+                playing=true;
+
+
+
+            }
+
+            catch(error){
+
+
+                console.log("Video waiting...");
+
+
+            }
+
 
 
         });
+
+
 
 
 
@@ -544,13 +535,22 @@ function displayClips(clips){
         ()=>{
 
 
-            video.pause();
+            if(playing){
 
 
-            video.currentTime = 0;
+                video.pause();
 
 
-            overlay.style.opacity="1";
+                video.currentTime=0;
+
+
+                overlay.style.opacity="1";
+
+
+                playing=false;
+
+
+            }
 
 
         });
@@ -563,10 +563,14 @@ function displayClips(clips){
 
 
 
+
+        // ===========================
         // Download
+        // ===========================
 
 
-        card.querySelector(".download-btn")
+        card
+        .querySelector(".download-btn")
         .onclick = ()=>{
 
 
@@ -581,7 +585,9 @@ function displayClips(clips){
 
 
             a.download =
-            clip.file.split("/").pop();
+            clip.file
+            .split("/")
+            .pop();
 
 
 
@@ -590,7 +596,6 @@ function displayClips(clips){
 
 
         };
-
 
 
 
@@ -612,28 +617,7 @@ function displayClips(clips){
 
 
 
-
-
-    // Force browser to load previews after search
-
-    const videos =
-    container.querySelectorAll("video");
-
-
-
-    videos.forEach(video=>{
-
-
-        video.load();
-
-
-    });
-
-
-
 }
-
-
 
 
 
