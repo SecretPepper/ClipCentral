@@ -1,0 +1,362 @@
+/* ===========================
+   Music Page
+=========================== */
+
+.page-title{
+
+    text-align:center;
+    padding:80px 20px 45px;
+
+}
+
+.page-title h1{
+
+    font-size:52px;
+    margin-bottom:12px;
+
+}
+
+.page-title p{
+
+    color:#8b949e;
+    font-size:18px;
+
+}
+
+/* ===========================
+   Search Area
+=========================== */
+
+.search-area{
+
+    width:90%;
+    max-width:1200px;
+
+    margin:35px auto 60px;
+
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+
+}
+
+.search-area input,
+.search-area select{
+
+    background:#161b22;
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+
+    padding:16px 18px;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+.search-area input{
+
+    flex:1;
+    min-width:280px;
+
+}
+
+.search-area select{
+
+    min-width:180px;
+
+}
+
+.search-area input:focus,
+.search-area select:focus{
+
+    border-color:#58a6ff;
+    box-shadow:0 0 15px rgba(88,166,255,.25);
+
+}
+
+/* ===========================
+   Music Grid
+=========================== */
+
+.clips-grid{
+
+    width:90%;
+    max-width:1450px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+
+    gap:30px;
+
+    padding-bottom:80px;
+
+}
+
+/* ===========================
+   Music Card
+=========================== */
+
+.clip-card{
+
+    background:#161b22;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.25s;
+
+}
+
+.clip-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#58a6ff;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+}
+
+.clip-info{
+
+    padding:24px;
+
+}
+
+.clip-info h2{
+
+    font-size:24px;
+
+    margin-bottom:8px;
+
+    line-height:1.3;
+
+}
+
+.category{
+
+    color:#58a6ff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    margin-bottom:18px;
+
+}
+
+.tags{
+
+    color:#8b949e;
+
+    font-size:15px;
+
+    margin-bottom:16px;
+
+}
+
+.duration{
+
+    font-weight:500;
+
+}
+
+/* ===========================
+   Progress Bar
+=========================== */
+
+.song-progress{
+
+    width:100%;
+
+    height:6px;
+
+    margin-bottom:24px;
+
+    appearance:none;
+
+    border:none;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.song-progress::-webkit-progress-bar{
+
+    background:#2b3139;
+
+    border-radius:999px;
+
+}
+
+.song-progress::-webkit-progress-value{
+
+    background:#2388ff;
+
+    border-radius:999px;
+
+}
+
+.song-progress::-moz-progress-bar{
+
+    background:#2388ff;
+
+    border-radius:999px;
+
+}
+
+/* ===========================
+   Hide Audio
+=========================== */
+
+audio{
+
+    display:none;
+
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.card-buttons{
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+.card-buttons button{
+
+    flex:1;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.preview-btn{
+
+    background:#2388ff;
+
+    color:white;
+
+}
+
+.preview-btn:hover{
+
+    background:#4ba0ff;
+
+}
+
+.download-btn{
+
+    background:#179c0a;
+
+    color:white;
+
+}
+
+.download-btn:hover{
+
+    background:#29be0e;
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .page-title h1{
+
+        font-size:40px;
+
+    }
+
+    .search-area{
+
+        flex-direction:column;
+
+    }
+
+    .search-area input,
+    .search-area select{
+
+        width:100%;
+
+    }
+
+    .clips-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .card-buttons{
+
+        flex-direction:column;
+
+    }
+
+}
+
+.tag-list{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-bottom:15px;
+
+}
+
+.tag-list span{
+
+    background:#21262d;
+
+    color:#fff;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:13px;
+
+    font-weight:500;
+
+}

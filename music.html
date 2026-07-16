@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipCentral | Music</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/music.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        🎬 ClipCentral
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Clips</a>
+        <a href="music.html">Music</a>
+    </nav>
+
+</header>
+
+<section class="page-title">
+
+    <h1>Browse Music</h1>
+
+    <p>Find the perfect song for your edit.</p>
+
+</section>
+
+<section class="search-area">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search music..."
+    >
+
+    <select id="genreFilter">
+    <option value="All">All</option>
+    <option value="Beats">Beats</option>
+    <option value="Vibe">Vibe</option>
+    <option value="Build Up">Build Up</option>
+</select>
+
+    <select id="sortFilter">
+        <option value="Newest">Newest</option>
+        <option value="Oldest">Oldest</option>
+        <option value="A-Z">A-Z</option>
+    </select>
+
+</section>
+
+<section id="musicContainer" class="clips-grid">
+
+    <!-- JavaScript creates all music cards -->
+
+</section>
+
+<script src="js/music.js"></script>
+
+</body>
+</html>

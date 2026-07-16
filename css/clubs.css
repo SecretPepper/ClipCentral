@@ -1,0 +1,193 @@
+/* ===========================
+   ClipCentral Clubs Page
+=========================== */
+
+.hero{
+
+    text-align:center;
+
+    padding:80px 20px 50px;
+
+}
+
+
+.hero h1{
+
+    font-size:52px;
+
+    margin-bottom:15px;
+
+}
+
+
+.hero p{
+
+    color:#9ca3af;
+
+    font-size:18px;
+
+}
+
+
+/* ===========================
+   Club Grid
+=========================== */
+
+
+.club-grid{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:0 auto 80px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
+
+
+
+/* ===========================
+   Club Cards
+=========================== */
+
+
+.club-card{
+
+    background:#161b22;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:45px 25px;
+
+    text-align:center;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.club-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#58a6ff;
+
+    box-shadow:
+    0 20px 45px rgba(88,166,255,.18);
+
+}
+
+
+
+/* ===========================
+   Club Logo
+=========================== */
+
+
+.club-logo{
+
+    width:100px;
+    height:100px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.club-logo img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    display:block;
+}
+
+
+
+/* ===========================
+   Text
+=========================== */
+
+
+.club-card h2{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+
+.club-card p{
+
+    color:#9ca3af;
+
+    font-size:15px;
+
+}
+
+
+
+/* ===========================
+   Loading
+=========================== */
+
+
+.loading{
+
+    text-align:center;
+
+    color:#9ca3af;
+
+    font-size:20px;
+
+    padding:50px;
+
+}
+
+
+
+/* ===========================
+   Mobile
+=========================== */
+
+
+@media(max-width:768px){
+
+
+    .hero h1{
+
+        font-size:38px;
+
+    }
+
+
+    .club-grid{
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+}

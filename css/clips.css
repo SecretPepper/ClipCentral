@@ -1,0 +1,146 @@
+/* ===========================
+   ClipCentral Categories
+=========================== */
+
+.hero{
+    text-align:center;
+    padding:80px 20px 50px;
+}
+
+.hero h1{
+    font-size:52px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#9ca3af;
+    font-size:18px;
+}
+
+/* ===========================
+   Category Grid
+=========================== */
+
+.category-grid{
+
+    width:90%;
+    max-width:1400px;
+
+    margin:0 auto 80px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:30px;
+
+}
+
+/* ===========================
+   Category Card
+=========================== */
+
+.category-card{
+
+    background:#161b22;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.category-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+
+    left:-50%;
+
+    width:200%;
+
+    height:200%;
+
+    background:linear-gradient(
+        45deg,
+        transparent,
+        rgba(88,166,255,.12),
+        transparent
+    );
+
+    transform:rotate(25deg);
+
+    transition:.6s;
+
+    opacity:0;
+
+}
+
+.category-card:hover::before{
+
+    opacity:1;
+
+}
+
+.category-card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#58a6ff;
+
+    box-shadow:0 20px 45px rgba(88,166,255,.18);
+
+}
+
+.emoji{
+
+    font-size:72px;
+
+    margin-bottom:25px;
+
+}
+
+.category-card h2{
+
+    font-size:30px;
+
+    font-weight:600;
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media(max-width:768px){
+
+    .hero h1{
+
+        font-size:38px;
+
+    }
+
+    .category-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

@@ -1,0 +1,335 @@
+/* ===========================
+   ClipCentral Library
+   Video Viewing Page
+=========================== */
+
+
+
+.hero{
+
+    text-align:center;
+
+    padding:70px 20px 40px;
+
+}
+
+
+
+.hero h1{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.hero p{
+
+    color:#9ca3af;
+
+}
+
+
+
+
+
+/* Search */
+
+
+.clip-search{
+
+    display:block;
+
+    width:90%;
+
+    max-width:600px;
+
+    margin:0 auto 40px;
+
+    padding:15px 20px;
+
+    border-radius:12px;
+
+    border:none;
+
+    background:#161b22;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+
+
+
+
+
+/* Video Grid */
+
+
+#clipContainer{
+
+    width:90%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(350px,1fr));
+
+    gap:35px;
+
+}
+
+
+
+
+
+
+
+/* Main Card */
+
+
+.library-card{
+
+    background:#161b22;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+
+
+.library-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+
+
+
+
+/* Video Area */
+
+
+.video-box{
+
+    width:100%;
+
+    aspect-ratio:16 / 9;
+
+    position:relative;
+
+    background:black;
+
+    overflow:hidden;
+
+}
+
+
+
+
+
+.video-box video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+
+
+
+
+
+/* Play icon before hover */
+
+
+.play-overlay{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:rgba(0,0,0,.6);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+}
+
+
+
+
+
+
+
+/* Information */
+
+
+.clip-info{
+
+    padding:20px;
+
+}
+
+
+
+.clip-info h2{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.clip-info p{
+
+    color:#9ca3af;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+
+/* Tags */
+
+
+.tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.tags span{
+
+    background:#21262d;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+
+
+
+
+
+
+/* Download */
+
+
+.download-btn{
+
+    width:100%;
+
+    padding:13px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2388ff;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+
+.download-btn:hover{
+
+    background:#58a6ff;
+
+}
+
+
+
+
+
+
+
+/* Mobile */
+
+
+@media(max-width:768px){
+
+
+    #clipContainer{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .hero h1{
+
+        font-size:36px;
+
+    }
+
+
+}
