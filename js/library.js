@@ -1,7 +1,8 @@
 // ===========================
 // ClipCentral
 // library.js
-// Optimized Video Preview Version
+// Optimized Video Loading Version
+// + Fast ZIP Download All Clips
 // ===========================
 
 
@@ -13,9 +14,18 @@ const params = new URLSearchParams(
 const player = params.get("player");
 
 
-const title = document.getElementById("playerTitle");
 
-const container = document.getElementById("clipContainer");
+const title =
+document.getElementById("playerTitle");
+
+
+const container =
+document.getElementById("clipContainer");
+
+
+const downloadAllBtn =
+document.getElementById("downloadAllBtn");
+
 
 
 let playerClips = [];
@@ -23,35 +33,53 @@ let playerClips = [];
 
 
 
+// ===========================
+// Search Box
+// ===========================
+
+const searchBox =
+document.createElement("input");
+
+
+searchBox.placeholder =
+"Search clips...";
+
+
+searchBox.className =
+"clip-search";
+
+
+const downloadWrapper =
+document.querySelector(".download-all-wrapper");
+
+
+if(downloadWrapper){
+
+    downloadWrapper.insertAdjacentElement(
+        "afterend",
+        searchBox
+    );
+
+}
+else{
+
+    container.parentElement.insertBefore(
+        searchBox,
+        container
+    );
+
+}
 
 
 
-// Search box
-
-const searchBox = document.createElement("input");
 
 
-searchBox.placeholder = "Search clips...";
+// ===========================
+// Format Name
+// ===========================
 
-
-searchBox.className = "clip-search";
-
-
-container.parentElement.insertBefore(
-    searchBox,
-    container
-);
-
-
-
-
-
-
-
-// Format name
 
 function formatName(name){
-
 
     return name
     .replaceAll("-", " ")
@@ -59,10 +87,7 @@ function formatName(name){
         letter.toUpperCase()
     );
 
-
 }
-
-
 
 
 
@@ -70,12 +95,10 @@ function formatName(name){
 
 if(player && title){
 
-
     title.innerHTML =
     formatName(player)
     +
     " Clips";
-
 
 }
 
@@ -85,9 +108,10 @@ if(player && title){
 
 
 
+// ===========================
+// Load Clips
+// ===========================
 
-
-// Load clips
 
 async function loadClips(){
 
@@ -96,7 +120,9 @@ async function loadClips(){
 
 
         const response =
-        await fetch("data/clips.json");
+        await fetch(
+            "data/clips.json"
+        );
 
 
 
@@ -106,18 +132,35 @@ async function loadClips(){
 
 
 
+
+        // remove duplicate files automatically
         playerClips =
-        allClips.filter(clip =>
+        [
+            ...new Map(
 
-            clip.player === player
+                allClips
 
+                .filter(clip =>
+                    clip.player === player
+                )
+
+                .map(clip =>
+                    [
+                        clip.file,
+                        clip
+                    ]
+                )
+
+            ).values()
+
+        ];
+
+
+
+
+        displayClips(
+            playerClips
         );
-
-
-
-
-        displayClips(playerClips);
-
 
 
     }
@@ -144,9 +187,10 @@ async function loadClips(){
 
 
 
+// ===========================
+// Search
+// ===========================
 
-
-// Search delay
 
 let searchTimer;
 
@@ -161,7 +205,8 @@ searchBox.addEventListener(
 
 
 
-    searchTimer = setTimeout(()=>{
+    searchTimer =
+    setTimeout(()=>{
 
 
         searchClips();
@@ -179,11 +224,7 @@ searchBox.addEventListener(
 
 
 
-
-
-
 function searchClips(){
-
 
 
     const text =
@@ -194,19 +235,18 @@ function searchClips(){
 
 
 
-
     if(text === ""){
 
 
-        displayClips(playerClips);
+        displayClips(
+            playerClips
+        );
 
 
         return;
 
 
     }
-
-
 
 
 
@@ -220,14 +260,20 @@ function searchClips(){
 
         const data = [
 
+
             clip.title,
+
 
             clip.playerName,
 
+
             ...(clip.tags || [])
 
+
         ]
+
         .join(" ")
+
         .toLowerCase();
 
 
@@ -242,58 +288,25 @@ function searchClips(){
 
 
 
-
-
-    displayClips(filtered);
-
+    displayClips(
+        filtered
+    );
 
 
 }
+// ===========================
+// Display Clips
+// ===========================
 
-
-
-
-
-
-
-
-
-
-
-// Display clips
 
 function displayClips(clips){
 
 
-
-
-
-    container
-    .querySelectorAll("video")
-    .forEach(video=>{
-
-
-        video.pause();
-
-
-        video.removeAttribute("src");
-
-
-    });
-
-
-
-
-
-    container.innerHTML="";
-
-
+    container.innerHTML = "";
 
 
     const fragment =
     document.createDocumentFragment();
-
-
 
 
 
@@ -322,10 +335,7 @@ function displayClips(clips){
 
 
 
-
-
     clips.forEach(clip=>{
-
 
 
         const card =
@@ -335,10 +345,6 @@ function displayClips(clips){
 
         card.className =
         "library-card";
-
-
-
-
 
 
 
@@ -360,7 +366,6 @@ function displayClips(clips){
             preload="metadata">
 
 
-
                 <source
 
                 src="${clip.file}"
@@ -368,10 +373,7 @@ function displayClips(clips){
                 type="video/mp4">
 
 
-
             </video>
-
-
 
 
 
@@ -384,8 +386,6 @@ function displayClips(clips){
 
 
         </div>
-
-
 
 
 
@@ -420,6 +420,7 @@ function displayClips(clips){
 
             ${
                 (clip.tags || [])
+
                 .map(tag=>`
 
                     <span>
@@ -429,6 +430,7 @@ function displayClips(clips){
                     </span>
 
                 `)
+
                 .join("")
             }
 
@@ -448,18 +450,10 @@ function displayClips(clips){
 
 
 
-
         </div>
 
 
-
         `;
-
-
-
-
-
-
 
 
 
@@ -479,59 +473,105 @@ function displayClips(clips){
 
 
 
-
-
-
-
-        // Load first frame
-
-        video.addEventListener(
-            "loadedmetadata",
-            ()=>{
-
-
-                video.currentTime = 0.1;
-
-
-            }
-        );
-
-
-
-
-        video.addEventListener(
-            "loadeddata",
-            ()=>{
-
-
-                video.pause();
-
-
-            }
-        );
+        let playing = false;
 
 
 
 
 
 
-
-
-        // Hover ONLY video area
+        // ===========================
+        // Hover Preview
+        // ===========================
 
 
         videoBox.addEventListener(
         "mouseenter",
-        ()=>{
+        async ()=>{
 
 
-            video.play();
+            try{
 
 
-            overlay.style.opacity="0";
+                document
+
+                .querySelectorAll(
+                    ".library-card video"
+                )
+
+                .forEach(other=>{
+
+
+                    if(other !== video){
+
+
+                        other.pause();
+
+
+                        other.currentTime = 0;
+
+
+
+                        const otherOverlay =
+                        other
+
+                        .closest(".video-box")
+
+                        .querySelector(
+                            ".play-overlay"
+                        );
+
+
+
+                        if(otherOverlay){
+
+                            otherOverlay.style.opacity =
+                            "1";
+
+                        }
+
+
+                    }
+
+
+                });
+
+
+
+
+
+                await video.play();
+
+
+
+                overlay.style.opacity =
+                "0";
+
+
+
+                playing = true;
+
+
+
+            }
+
+
+            catch(error){
+
+
+                console.log(
+                    "Video waiting..."
+                );
+
+
+            }
+
 
 
         });
+
+
+
 
 
 
@@ -544,13 +584,25 @@ function displayClips(clips){
         ()=>{
 
 
-            video.pause();
+            if(playing){
 
 
-            video.currentTime = 0;
+                video.pause();
 
 
-            overlay.style.opacity="1";
+                video.currentTime = 0;
+
+
+
+                overlay.style.opacity =
+                "1";
+
+
+
+                playing = false;
+
+
+            }
 
 
         });
@@ -563,30 +615,103 @@ function displayClips(clips){
 
 
 
-        // Download
+        // ===========================
+        // Single Clip Download
+        // ===========================
 
 
-        card.querySelector(".download-btn")
-        .onclick = ()=>{
+        card
+
+        .querySelector(".download-btn")
+
+        .onclick = async ()=>{
 
 
-            const a =
-            document.createElement("a");
+            try{
 
 
-
-            a.href =
-            clip.file;
-
-
-
-            a.download =
-            clip.file.split("/").pop();
+                const response =
+                await fetch(
+                    clip.file
+                );
 
 
 
-            a.click();
+                const blob =
+                await response.blob();
 
+
+
+
+                const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+
+
+
+                const a =
+                document.createElement(
+                    "a"
+                );
+
+
+
+                a.href =
+                url;
+
+
+
+                a.download =
+                clip.file
+
+                .split("/")
+
+                .pop();
+
+
+
+
+
+                document.body.appendChild(
+                    a
+                );
+
+
+
+                a.click();
+
+
+
+                document.body.removeChild(
+                    a
+                );
+
+
+
+                URL.revokeObjectURL(
+                    url
+                );
+
+
+            }
+
+
+            catch(error){
+
+
+                console.error(error);
+
+
+
+                alert(
+                    "Download failed."
+                );
+
+
+            }
 
 
         };
@@ -594,10 +719,9 @@ function displayClips(clips){
 
 
 
-
-
-
-        fragment.appendChild(card);
+        fragment.appendChild(
+            card
+        );
 
 
 
@@ -606,29 +730,344 @@ function displayClips(clips){
 
 
 
+    container.appendChild(
+        fragment
+    );
 
 
-    container.appendChild(fragment);
+}
+// ===========================
+// Download All Clips ZIP
+// ===========================
+
+
+if(downloadAllBtn){
+
+
+downloadAllBtn.onclick = async ()=>{
+
+
+    if(playerClips.length === 0){
+
+
+        alert(
+            "No clips found."
+        );
+
+
+        return;
+
+
+    }
+
+
+
+    try{
+
+
+        downloadAllBtn.disabled = true;
+
+
+
+        const total =
+        playerClips.length;
+
+
+
+        downloadAllBtn.textContent =
+        `Preparing 0/${total}`;
+
+
+
+        const zip =
+        new JSZip();
+
+
+
+
+        let completed = 0;
+
+
+
+        // Number of simultaneous downloads
+        const workers = 10;
+
+
+
+        async function downloadWorker(queue){
+
+
+            while(queue.length > 0){
+
+
+                const clip =
+                queue.shift();
+
+
+
+                try{
+
+
+                    const response =
+                    await fetch(
+                        clip.file
+                    );
+
+
+
+                    if(!response.ok){
+
+                        throw new Error(
+                            "Failed: " + clip.file
+                        );
+
+                    }
+
+
+
+
+                    const blob =
+                    await response.blob();
+
+
+
+
+                    const filename =
+                    clip.file
+                    .split("/")
+                    .pop();
+
+
+
+
+                    zip.file(
+                        filename,
+                        blob
+                    );
+
+
+
+
+                    completed++;
+
+
+
+                    downloadAllBtn.textContent =
+                    `Adding ${completed}/${total}`;
+
+
+
+                }
+
+
+                catch(error){
+
+
+                    console.error(
+                        error
+                    );
+
+
+                }
+
+
+            }
+
+
+        }
 
 
 
 
 
-    // Force browser to load previews after search
-
-    const videos =
-    container.querySelectorAll("video");
+        const queue =
+        [...playerClips];
 
 
 
-    videos.forEach(video=>{
 
 
-        video.load();
+        const workerArray = [];
 
 
-    });
 
+        for(
+            let i = 0;
+            i < workers;
+            i++
+        ){
+
+
+            workerArray.push(
+                downloadWorker(queue)
+            );
+
+
+        }
+
+
+
+
+        await Promise.all(
+            workerArray
+        );
+
+
+
+
+
+
+        downloadAllBtn.textContent =
+        "Creating ZIP...";
+
+
+
+
+
+
+
+        const zipBlob =
+        await zip.generateAsync({
+
+
+            type:"blob",
+
+
+
+            compression:"DEFLATE",
+
+
+
+            compressionOptions:{
+
+
+                level:3
+
+
+            }
+
+
+
+        });
+
+
+
+
+
+
+        downloadAllBtn.textContent =
+        "Starting download...";
+
+
+
+
+
+
+        const url =
+        URL.createObjectURL(
+            zipBlob
+        );
+
+
+
+
+
+        const a =
+        document.createElement(
+            "a"
+        );
+
+
+
+
+        a.href =
+        url;
+
+
+
+
+        a.download =
+        `${player}-clips.zip`;
+
+
+
+
+
+        document.body.appendChild(
+            a
+        );
+
+
+
+        a.click();
+
+
+
+        document.body.removeChild(
+            a
+        );
+
+
+
+
+        setTimeout(()=>{
+
+
+            URL.revokeObjectURL(
+                url
+            );
+
+
+        },1000);
+
+
+
+
+
+
+        downloadAllBtn.textContent =
+        "Download All Clips ZIP";
+
+
+
+        downloadAllBtn.disabled =
+        false;
+
+
+
+    }
+
+
+
+    catch(error){
+
+
+        console.error(
+            error
+        );
+
+
+
+        alert(
+            "ZIP creation failed."
+        );
+
+
+
+        downloadAllBtn.textContent =
+        "Download All Clips ZIP";
+
+
+
+        downloadAllBtn.disabled =
+        false;
+
+
+    }
+
+
+
+};
 
 
 }
@@ -639,6 +1078,9 @@ function displayClips(clips){
 
 
 
+// ===========================
+// Start
+// ===========================
 
 
 loadClips();

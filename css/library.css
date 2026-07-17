@@ -4,6 +4,7 @@
 =========================== */
 
 
+/* Hero */
 
 .hero{
 
@@ -12,7 +13,6 @@
     padding:70px 20px 40px;
 
 }
-
 
 
 .hero h1{
@@ -24,7 +24,6 @@
 }
 
 
-
 .hero p{
 
     color:#9ca3af;
@@ -33,9 +32,9 @@
 
 
 
-
-
-/* Search */
+/* ===========================
+   Search
+=========================== */
 
 
 .clip-search{
@@ -46,7 +45,7 @@
 
     max-width:600px;
 
-    margin:0 auto 40px;
+    margin:0 auto 15px;
 
     padding:15px 20px;
 
@@ -60,14 +59,71 @@
 
     font-size:16px;
 
+    outline:none;
+
+}
+
+
+.clip-search:focus{
+
+    box-shadow:0 0 0 2px #2388ff;
+
 }
 
 
 
+/* ===========================
+   Download All Button
+=========================== */
+
+
+.download-all-wrapper{
+
+    width:90%;
+
+    max-width:600px;
+
+    margin:0 auto 40px;
+
+}
+
+
+#downloadAllBtn{
+
+    width:100%;
+
+    padding:15px 20px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2388ff;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+#downloadAllBtn:hover{
+
+    background:#58a6ff;
+
+}
 
 
 
-/* Video Grid */
+/* ===========================
+   Video Grid
+=========================== */
 
 
 #clipContainer{
@@ -81,7 +137,6 @@
     display:grid;
 
     grid-template-columns:
-
     repeat(auto-fit,minmax(350px,1fr));
 
     gap:35px;
@@ -90,11 +145,9 @@
 
 
 
-
-
-
-
-/* Main Card */
+/* ===========================
+   Main Card
+=========================== */
 
 
 .library-card{
@@ -112,7 +165,6 @@
 }
 
 
-
 .library-card:hover{
 
     transform:translateY(-8px);
@@ -121,11 +173,9 @@
 
 
 
-
-
-
-
-/* Video Area */
+/* ===========================
+   Video Area
+=========================== */
 
 
 .video-box{
@@ -143,9 +193,6 @@
 }
 
 
-
-
-
 .video-box video{
 
     width:100%;
@@ -160,11 +207,7 @@
 
 
 
-
-
-
-
-/* Play icon before hover */
+/* Play icon */
 
 
 .play-overlay{
@@ -201,11 +244,9 @@
 
 
 
-
-
-
-
-/* Information */
+/* ===========================
+   Information
+=========================== */
 
 
 .clip-info{
@@ -215,7 +256,6 @@
 }
 
 
-
 .clip-info h2{
 
     font-size:22px;
@@ -223,7 +263,6 @@
     margin-bottom:10px;
 
 }
-
 
 
 .clip-info p{
@@ -236,10 +275,9 @@
 
 
 
-
-
-
-/* Tags */
+/* ===========================
+   Tags
+=========================== */
 
 
 .tags{
@@ -253,7 +291,6 @@
     margin-bottom:20px;
 
 }
-
 
 
 .tags span{
@@ -270,11 +307,9 @@
 
 
 
-
-
-
-
-/* Download */
+/* ===========================
+   Clip Download Button
+=========================== */
 
 
 .download-btn{
@@ -298,7 +333,6 @@
 }
 
 
-
 .download-btn:hover{
 
     background:#58a6ff;
@@ -307,11 +341,9 @@
 
 
 
-
-
-
-
-/* Mobile */
+/* ===========================
+   Mobile
+=========================== */
 
 
 @media(max-width:768px){
@@ -322,7 +354,6 @@
         grid-template-columns:1fr;
 
     }
-
 
 
     .hero h1{
