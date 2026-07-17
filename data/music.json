@@ -1,0 +1,181 @@
+[
+    {
+        "id": 1,
+        "title": "You Already Know",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Fast",
+            "Hype"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/1.m4a"
+    },
+
+    {
+        "id": 2,
+        "title": "Miracle",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Fast",
+            "Hype"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/2.m4a"
+    },
+
+    {
+        "id": 3,
+        "title": "Love Again",
+        "genre": "Build Up",
+        "tags": [
+            "Edit",
+            "Smooth",
+            "Feelings"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/3.m4a"
+    },
+
+    {
+        "id": 4,
+        "title": "Can't Be Defeated",
+        "genre": "Vibe",
+        "tags": [
+            "Edit",
+            "Slow",
+            "Adventure"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/4.m4a"
+    },
+
+    {
+        "id": 5,
+        "title": "Around The World",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Rapid",
+            "Hype"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/5.m4a"
+    },
+
+    {
+        "id": 6,
+        "title": "Can't Move On",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Slow",
+            "Feelings"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/6.m4a"
+    },
+
+    {
+        "id": 7,
+        "title": "Be Right Where You Are",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Rhythm",
+            "Feelings"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/7.m4a"
+    },
+
+    {
+        "id": 8,
+        "title": "Movie Scene",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Fast",
+            "Rap"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/8.m4a"
+    },
+
+    {
+        "id": 9,
+        "title": "Mata.....",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Slow",
+            "Aura"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/9.m4a"
+    },
+
+    {
+        "id": 10,
+        "title": "Contigo Papi",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Slow",
+            "Aura"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/10.m4a"
+    },
+
+    {
+        "id": 11,
+        "title": "Montagem",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Slow",
+            "Aura"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/11.m4a"
+    },
+
+    {
+        "id": 12,
+        "title": "The Light",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Fast",
+            "Rhythm"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/12.m4a"
+    },
+
+    {
+        "id": 13,
+        "title": "Until The Midnight",
+        "genre": "Vibe",
+        "tags": [
+            "Edit",
+            "Rhythm",
+            "Dancing"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/13.m4a"
+    },
+
+    {
+        "id": 14,
+        "title": "Part At The Beach",
+        "genre": "Beats",
+        "tags": [
+            "Edit",
+            "Fast",
+            "Dancing"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/14.m4a"
+    },
+
+    {
+        "id": 15,
+        "title": "Shape Of You",
+        "genre": "Vibe",
+        "tags": [
+            "Edit",
+            "Rhythm",
+            "Dancing"
+        ],
+        "file": "https://ujsggilrfwtjsysvqfga.supabase.co/storage/v1/object/public/clips/music/15.m4a"
+    }
+]
